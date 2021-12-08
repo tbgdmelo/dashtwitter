@@ -33,6 +33,7 @@ app.use("/js", [
 
 app.use("/css", express.static(`${__dirname}/public/css`));
 app.use("/img", express.static(`${__dirname}/public/images`));
+app.use("/assets", express.static(`${__dirname}/public/assets`));
 
 app.use(indexRouter);
 app.use(usersRouter);

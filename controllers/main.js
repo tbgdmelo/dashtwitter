@@ -3,4 +3,9 @@ async function index(req,res){
     res.render("main/home",{titulo:"Inicio"});
 }
 
-module.exports = { index };
+
+async function sobre(req,res){
+    res.render("main/sobre",{titulo:"Sobre"});
+}
+
+module.exports = { index, sobre };
