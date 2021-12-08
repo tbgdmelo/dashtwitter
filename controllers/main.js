@@ -73,7 +73,7 @@ async function sobre(req,res){
 
 async function nuvem(req,res){
     //const tweets2 = await Tweets.find().sort({coleta: -1}).limit(5);
-    
+    //
     //var nuvem = gerarNuvem(tweets2);
     res.render("main/nuvem",{titulo:"Nuvem de Palavras"});
 }
