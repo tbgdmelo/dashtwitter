@@ -1,6 +1,6 @@
 
 async function index(req,res){
-    res.render("main/home",{titulo:"Inicio"});
+    res.render("main/home",{titulo:"Dashboard Twitter"});
 }
 
 
