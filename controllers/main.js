@@ -48,7 +48,7 @@ async function index(req,res){
     try{
         const tweets = await Tweets.find();
 
-        const trending = await Trending.find().sort({horario_coleta: -1}).limit(5);
+        const trending = await Trending.findOne().sort({horario_coleta: -1});
 
         res.render("main/home",{titulo:"Dashboard Twitter",
          trending: top10(trending.trending[0]['trends']),
@@ -72,12 +72,9 @@ async function sobre(req,res){
 }
 
 async function nuvem(req,res){
-    const tweets = await Tweets.find().sort({coleta: -1}).limit(5);
+    const tweets2 = await Tweets.find().sort({coleta: -1}).limit(5);
     
-    var nuvem = gerarNuvem(tweets);
-
-    console.log(nuvem);
-
+    var nuvem = gerarNuvem(tweets2);
     res.render("main/nuvem",{titulo:"Nuvem de Palavras"});
 }
 
