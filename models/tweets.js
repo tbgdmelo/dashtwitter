@@ -4,11 +4,11 @@ const TweetsSchema = new mongoose.Schema({
     id:{
         type: String
     },
-    tema:{
-        type: String
-    },
-    tweet:{
+    assuntos_tweets:{
         type: Array
+    },
+    coleta:{
+        type: String
     }
 });
 
