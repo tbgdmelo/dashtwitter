@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require('../database/index');
 
 const TweetsSchema = new mongoose.Schema({
     id:{
@@ -12,6 +12,6 @@ const TweetsSchema = new mongoose.Schema({
     }
 });
 
-const Tweets = mongoose.model('Tweets', TweetsSchema);
+const Tweets = mongoose.model('tweet', TweetsSchema);
 
 module.exports = Tweets;
