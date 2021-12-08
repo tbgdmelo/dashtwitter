@@ -4,7 +4,7 @@ const TweetsSchema = new mongoose.Schema({
     id:{
         type: String
     },
-    assuntos_tweets:{
+    assunto_tweets:{
         type: Array
     },
     coleta:{

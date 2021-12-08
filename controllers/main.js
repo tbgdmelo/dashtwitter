@@ -8,16 +8,30 @@ function top10(trending){
     for(var i = 0; i < 20 && i < trending.length; ++i){
         result.push(trending[i]);
     }
-    console.log(result);
+    return result;
+}
+
+function countTweets(tweets){
+    var result = 0;
+    for(var i=0; i<tweets.length; i++){
+        for(var j=0; j<tweets[i]['assunto_tweets'].length; j++){
+            result=result+tweets[i]['assunto_tweets'][j]['tweet'].length;
+        }
+    }
     return result;
 }
 
 async function index(req,res){
     try{
+        const tweets = await Tweets.find();
+        countTweets(tweets);
+
         const trending = await Trending.findOne().sort({horario_coleta: -1});
+        
         res.render("main/home",{titulo:"Dashboard Twitter",
          trending: top10(trending.trending[0]['trends']),
-         coleta: trending.horario_coleta
+         coleta: trending.horario_coleta,
+         total_tweets: countTweets(tweets)
         } );
     }
     catch (e){
