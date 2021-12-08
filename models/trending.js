@@ -4,7 +4,7 @@ const TrendingSchema = new mongoose.Schema({
     id:{
         type: String
     },
-    horario_cole:{
+    horario_coleta:{
         type: String
     },
     trending:{

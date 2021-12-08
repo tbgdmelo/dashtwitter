@@ -86,101 +86,34 @@
                   <thead>
                     <tr>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Assunto | Pessoa | Hashtag</th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Total de Tweets</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Total de Tweets na rede</th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Visualizar Gráficos</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Visualizar no Twitter</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>
-                        <div class="d-flex px-2 py-1">
-                          <div>
-                           
+                    {{#each trending}}
+
+                      <tr>
+                        <td>
+                          <div class="d-flex px-2 py-1">
+                            <div class="d-flex flex-column justify-content-center">
+                              <h6 class="mb-0 text-sm">{{name}}</h6>
+                            </div>
                           </div>
-                          <div class="d-flex flex-column justify-content-center">
-                            <h6 class="mb-0 text-sm">TEMA</h6>
-                          </div>
-                        </div>
-                      </td>
-                      <td class="align-middle text-center text-sm">
-                        <span class="text-xs font-weight-bold"> 1 </span>
-                      </td>
-                      <td class="align-middle text-center text-sm">
-                        <a href="#"><i class="fas fa-chart-area"></i></a>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <div class="d-flex px-2 py-1">
-                          <div>
-                           
-                          </div>
-                          <div class="d-flex flex-column justify-content-center">
-                            <h6 class="mb-0 text-sm">ASSUNTO</h6>
-                          </div>
-                        </div>
-                      </td>
-                      <td class="align-middle text-center text-sm">
-                        <span class="text-xs font-weight-bold"> 2 </span>
-                      </td>
-                      <td class="align-middle text-center text-sm">
-                        <a href="#"><i class="fas fa-chart-area"></i></a>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <div class="d-flex px-2 py-1">
-                          <div>
-                            
-                          </div>
-                          <div class="d-flex flex-column justify-content-center">
-                            <h6 class="mb-0 text-sm">PESSOA</h6>
-                          </div>
-                        </div>
-                      </td>
-                      <td class="align-middle text-center text-sm">
-                        <span class="text-xs font-weight-bold"> 3 </span>
-                      </td>
-                      <td class="align-middle text-center text-sm">
-                        <a href="#"><i class="fas fa-chart-area"></i></a>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <div class="d-flex px-2 py-1">
-                          <div>
-                           
-                          </div>
-                          <div class="d-flex flex-column justify-content-center">
-                            <h6 class="mb-0 text-sm">HASHTAG</h6>
-                          </div>
-                        </div>
-                      </td>
-                      <td class="align-middle text-center text-sm">
-                        <span class="text-xs font-weight-bold"> 4 </span>
-                      </td>
-                      <td class="align-middle text-center text-sm">
-                        <a href="#"><i class="fas fa-chart-area"></i></a>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <div class="d-flex px-2 py-1">
-                          <div>
-                           
-                          </div>
-                          <div class="d-flex flex-column justify-content-center">
-                            <h6 class="mb-0 text-sm">PESSOA</h6>
-                          </div>
-                        </div>
-                      </td>
-                      <td class="align-middle text-center text-sm">
-                        <span class="text-xs font-weight-bold"> 5 </span>
-                      </td>
-                      <td class="align-middle text-center text-sm">
-                        <a href="#"><i class="fas fa-chart-area"></i></a>
-                      </td>
-                    </tr>
+                        </td>
+                        <td class="align-middle text-center text-sm">
+                          <span class="text-xs font-weight-bold"> {{tweet_volume}} </span>
+                        </td>
+                        <td class="align-middle text-center text-sm">
+                          <a href="#"><i class="fas fa-chart-area"></i></a>
+                        </td>
+                        <td class="align-middle text-center text-sm">
+                          <a href="{{url}}" target="_blank"><i class="fab fa-twitter"></i></a>
+                        </td>
+                      </tr>
+                      
+                    {{/each}}
                   </tbody>
                 </table>
               </div>
@@ -192,95 +125,25 @@
             <div class="card-header pb-0">
               <h6>Último Trending Topics</h6>
               <p class="text-sm">
-                10 assuntos mais comentados
+                TOP 20 assuntos mais comentados
               </p>
               <p class="text-sm">
                 <i class="fas fa-database text-success" aria-hidden="true"></i>
-                <span class="font-weight-bold">Coletado em: </span> this month
+                <span class="font-weight-bold">Coletado em: </span> {{coleta}}
               </p>
             </div>
             <div class="card-body p-3">
               <div class="timeline timeline-one-side">
-                <div>
-                  <span class="timeline-step">
-                   1º
-                  </span>
-                  <div class="timeline-content">
-                    <h6 class="text-dark text-sm font-weight-bold mb-0">Assunto</h6>
+                {{#each trending}}
+                  <div>
+                    <span class="timeline-step">
+                    
+                    </span>
+                    <div class="timeline-content">
+                      <h6 class="text-dark text-sm font-weight-bold mb-0">{{name}}</h6>
+                    </div>
                   </div>
-                </div>
-                <div>
-                  <span class="timeline-step">
-                   2º
-                  </span>
-                  <div class="timeline-content">
-                    <h6 class="text-dark text-sm font-weight-bold mb-0">Assunto</h6>
-                  </div>
-                </div>
-                <div>
-                  <span class="timeline-step">
-                   3º
-                  </span>
-                  <div class="timeline-content">
-                    <h6 class="text-dark text-sm font-weight-bold mb-0">Assunto</h6>
-                  </div>
-                </div>
-                <div>
-                  <span class="timeline-step">
-                   4º
-                  </span>
-                  <div class="timeline-content">
-                    <h6 class="text-dark text-sm font-weight-bold mb-0">Assunto</h6>
-                  </div>
-                </div>
-                <div>
-                  <span class="timeline-step">
-                   5º
-                  </span>
-                  <div class="timeline-content">
-                    <h6 class="text-dark text-sm font-weight-bold mb-0">Assunto</h6>
-                  </div>
-                </div>
-                <div>
-                  <span class="timeline-step">
-                   6º
-                  </span>
-                  <div class="timeline-content">
-                    <h6 class="text-dark text-sm font-weight-bold mb-0">Assunto</h6>
-                  </div>
-                </div>
-                <div>
-                  <span class="timeline-step">
-                   7º
-                  </span>
-                  <div class="timeline-content">
-                    <h6 class="text-dark text-sm font-weight-bold mb-0">Assunto</h6>
-                  </div>
-                </div>
-                <div>
-                  <span class="timeline-step">
-                   8º
-                  </span>
-                  <div class="timeline-content">
-                    <h6 class="text-dark text-sm font-weight-bold mb-0">Assunto</h6>
-                  </div>
-                </div>
-                <div>
-                  <span class="timeline-step">
-                   9º
-                  </span>
-                  <div class="timeline-content">
-                    <h6 class="text-dark text-sm font-weight-bold mb-0">Assunto</h6>
-                  </div>
-                </div>
-                <div>
-                  <span class="timeline-step">
-                   10º
-                  </span>
-                  <div class="timeline-content">
-                    <h6 class="text-dark text-sm font-weight-bold mb-0">Assunto</h6>
-                  </div>
-                </div>
+                {{/each}}
               </div>
             </div>
           </div>
