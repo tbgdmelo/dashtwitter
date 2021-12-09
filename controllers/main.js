@@ -46,15 +46,15 @@ function gerarNuvem(tweets){
 
 async function index(req,res){
     try{
-        const tweets = await Tweets.find();
+        //const tweets = await Tweets.find();
 
         const trending = await Trending.findOne().sort({horario_coleta: -1});
 
         res.render("main/home",{titulo:"Dashboard Twitter",
          trending: top10(trending.trending[0]['trends']),
          coleta: trending.horario_coleta,
-         total_tweets: countTweets(tweets),
-         hashtags: countHashtags(tweets)
+         //total_tweets: countTweets(tweets),
+         //hashtags: countHashtags(tweets)
         } );
     }
     catch (e){
