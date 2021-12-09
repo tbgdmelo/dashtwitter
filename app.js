@@ -57,7 +57,6 @@ app.use(function(err, req, res, next) {
 });*/
 
 const PORT = process.env.PORT || 5000;
-var server = app.listen(PORT, () => console.log(`Listening on ${ PORT }`));
+app.listen(PORT, () => console.log(`Listening on ${ PORT }`));
 
-server.timeout = 60000;
 module.exports = app;
