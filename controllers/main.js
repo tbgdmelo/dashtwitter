@@ -46,15 +46,15 @@ function gerarNuvem(tweets){
 
 async function index(req,res){
     try{
-        //const tweets = await Tweets.find();
+        const tweets = await Tweets.find();
 
         const trending = await Trending.findOne().sort({horario_coleta: -1});
 
         res.render("main/home",{titulo:"Dashboard Twitter",
          trending: top10(trending.trending[0]['trends']),
          coleta: trending.horario_coleta,
-         //total_tweets: countTweets(tweets),
-         //hashtags: countHashtags(tweets)
+         total_tweets: countTweets(tweets),
+         hashtags: countHashtags(tweets)
         } );
     }
     catch (e){
@@ -72,9 +72,9 @@ async function sobre(req,res){
 }
 
 async function nuvem(req,res){
-    //const tweets2 = await Tweets.find().sort({coleta: -1}).limit(5);
+    const tweets2 = await Tweets.find().sort({coleta: -1}).limit(5);
     //
-    //var nuvem = gerarNuvem(tweets2);
+    var nuvem = gerarNuvem(tweets2);
     res.render("main/nuvem",{titulo:"Nuvem de Palavras"});
 }
 
