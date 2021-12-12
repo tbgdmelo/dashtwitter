@@ -8,7 +8,6 @@ function totalTT(valor){
 }
 
 function verificaSentimento(sentiment){
-    console.log(sentiment)
     if(sentiment === 'Positivo'){
         return "smile";
     }
