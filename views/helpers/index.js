@@ -11,8 +11,11 @@ function verificaSentimento(sentiment){
     if(sentiment === 'Positivo'){
         return "smile";
     }
-    else{
+    else if(sentiment === 'Negativo'){
         return "frown";
+    }
+    else{
+        return "";
     }
 }
 
