@@ -2,8 +2,9 @@ const express = require('express');
 
 const Tweets = require('../models/tweets');
 const Trending = require('../models/trending');
+const Analise = require('../models/analise');
 
-function top10(trending){
+function top20(trending){
     var result = [ ];
     for(var i = 0; i < 20 && i < trending.length; ++i){
         result.push(trending[i]);
@@ -50,11 +51,14 @@ async function index(req,res){
 
         const trending = await Trending.findOne().sort({horario_coleta: -1});
 
+        const analises = await Analise.findOne().sort({analisado: -1});
+
         res.render("main/home",{titulo:"Dashboard Twitter",
-         trending: top10(trending.trending[0]['trends']),
+         trending: top20(trending.trending[0]['trends']),
          coleta: trending.horario_coleta,
          total_tweets: countTweets(tweets),
-         hashtags: countHashtags(tweets)
+         hashtags: countHashtags(tweets),
+         analises: analises.analises
         } );
     }
     catch (e){
@@ -75,6 +79,7 @@ async function nuvem(req,res){
     const tweets2 = await Tweets.find().sort({coleta: -1}).limit(5);
     //
     var nuvem = gerarNuvem(tweets2);
+    console.log(nuvem)
     res.render("main/nuvem",{titulo:"Nuvem de Palavras"});
 }
 

@@ -7,4 +7,20 @@ function totalTT(valor){
     }
 }
 
-module.exports= { totalTT }
+function verificaSentimento(sentiment){
+    console.log(sentiment)
+    if(sentiment === 'Positivo'){
+        return "smile";
+    }
+    else{
+        return "frown";
+    }
+}
+
+function verificaTema(nome, analise){
+    if(nome===analise){
+        return true
+    }
+    else{ return false}
+}
+module.exports= { totalTT, verificaSentimento, verificaTema }
