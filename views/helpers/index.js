@@ -9,10 +9,10 @@ function totalTT(valor){
 
 function verificaSentimento(sentiment){
     if(sentiment === 'Positivo'){
-        return "smile";
+        return "thumbs-up";
     }
     else if(sentiment === 'Negativo'){
-        return "frown";
+        return "thumbs-down";
     }
     else{
         return "";
