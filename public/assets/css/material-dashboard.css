@@ -198,7 +198,7 @@ a {
   color: #e91e63;
   text-decoration: none; }
   a:hover {
-    color: #e91e63;
+    color: #00669c;
     text-decoration: none; }
 
 a:not([href]):not([class]), a:not([href]):not([class]):hover {
