@@ -15,7 +15,7 @@ function verificaSentimento(sentiment){
         return "thumbs-down";
     }
     else{
-        return "";
+        return "ellipsis-h";
     }
 }
 
