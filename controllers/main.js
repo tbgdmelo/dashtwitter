@@ -52,6 +52,8 @@ async function index(req,res){
         const trending = await Trending.findOne().sort({horario_coleta: -1});
 
         const analises = await Analise.findOne().sort({analisado: -1});
+        
+        console.log(analises.analisado)
 
         res.render("main/home",{titulo:"Dashboard Twitter",
          trending: top20(trending.trending[0]['trends']),
@@ -88,7 +90,9 @@ async function analise(req,res){
 }
 
 async function graficos(req,res){
-    res.render("main/graficos",{titulo:"Gráficos"});
+    var tema = req.params.tema;
+    
+    res.render("main/graficos",{titulo:"Gráficos de "+tema});
 }
 
 module.exports = { index, sobre, nuvem, analise, graficos };

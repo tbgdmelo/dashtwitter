@@ -10,6 +10,6 @@ router.get("/analise", mainController.analise);
 
 router.get("/nuvem", mainController.nuvem);
 
-//router.get("/graficos/:id", mainController.sobre);
+router.get("/graficos/:tema", mainController.graficos);
 
 module.exports = router;

@@ -25,4 +25,14 @@ function verificaTema(nome, analise){
     }
     else{ return false}
 }
-module.exports= { totalTT, verificaSentimento, verificaTema }
+
+function tratarHashtag(tema){
+    if(tema.includes("#") ){
+        //remove a hashtag para criar uma rota valida
+        return tema.substr(1);
+    }
+    else{
+        return tema;
+    }
+}
+module.exports= { totalTT, verificaSentimento, verificaTema, tratarHashtag }
