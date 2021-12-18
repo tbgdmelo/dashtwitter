@@ -110,10 +110,7 @@
                           {{#each @root.analises}}
 
                             {{#if (verificaTema trend.name tema)}}
-
-                              <i class="fas fa-{{verificaSentimento sentiment}}"></i> 
-                            {{else}}
-                              <i class="fas fa-ellipsis-h"></i>
+                              <i class="fas fa-{{verificaSentimento sentiment}}"></i>
                             {{/if}}
 
                           {{/each}}
