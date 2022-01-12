@@ -1,1 +1,63 @@
-<h1>Gráficos</h1>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+</head>
+<body>
+    <h1>Gráficos de {{tema}}</h1>
+    <div>Excutado em: {{dataAnalisado}}</div>
+    <div id="chart"></div>
+    <div id="chart2"></div>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load('current', { packages: [ 'corechart' ] })
+        google.charts.setOnLoadCallback(drawChart)
+
+        function drawChart() {
+            const container = document.querySelector('#chart')
+            const data = new google.visualization.arrayToDataTable([
+                [ 'Sentimento', 'Tweets' ],
+                [ 'Positivo', {{positivo}} ],
+                [ 'Negativo', {{negativo}} ],
+            ])
+            const options = {
+                title: 'Quantidade de Tweets Analisados: '+{{total}},
+                height: 400,
+                width: 720
+            }
+
+            const chart = new google.visualization.ColumnChart(container)
+            chart.draw(data, options)
+        }
+        
+    </script>
+
+    <script type="text/javascript">
+        google.charts.load('current', { packages: [ 'corechart' ] })
+        google.charts.setOnLoadCallback(drawChart)
+
+        function drawChart() {
+            const container = document.querySelector('#chart2')
+            const data = new google.visualization.arrayToDataTable([
+                [ 'Coleta', 'Positivos', 'Negativos' ],
+                [ 4, {{positivo3}}, {{negativo3}} ],
+                [ 3, {{positivo2}}, {{negativo2}} ],
+                [ 2, {{positivo1}}, {{negativo1}} ],
+                [ 1, {{positivo}}, {{negativo}} ],
+            ])
+            const options = {
+                title: 'Variação de Tweets nas últimas 4 coletas',
+                height: 400,
+                width: 720
+            }
+
+            const chart = new google.visualization.AreaChart(container)
+            chart.draw(data, options)
+        }
+        
+    </script>
+</body>
+</html>

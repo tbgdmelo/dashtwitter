@@ -91,8 +91,100 @@ async function analise(req,res){
 
 async function graficos(req,res){
     var tema = req.params.tema;
+    const analises = await Analise.findOne().sort({analisado: -1});
     
-    res.render("main/graficos",{titulo:"Gráficos de "+tema});
+    let positivo = 0;
+    let negativo = 0;
+    let total = 0;
+    let dataAnalisado = '';
+
+    for(var i = 0; i < 50 && i < analises.analises.length; ++i){
+       
+        if(analises.analises[i].tema.includes(tema)){
+            positivo = analises.analises[i].qt_pos;
+            negativo = analises.analises[i].qt_neg;
+            total = analises.analises[i].total;
+            dataAnalisado = analises.analises[i].executado;
+            i=51;
+       }
+    }
+
+    const analisesTodos = await Analise.find().limit(4).sort({analisado: -1});
+
+    console.log(analisesTodos[1]);
+    
+    let positivo1 = 0;
+    let negativo1 = 0;
+    let total1 = 0;
+    let dataAnalisado1 = '';
+
+    for(var i = 0; i < 50 && i < analisesTodos[1].analises.length; ++i){
+       
+        if(analisesTodos[1].analises[i].tema.includes(tema)){
+            positivo1 = analisesTodos[1].analises[i].qt_pos;
+            negativo1 = analisesTodos[1].analises[i].qt_neg;
+            total1 = analisesTodos[1].analises[i].total;
+            dataAnalisado1 = analisesTodos[1].analises[i].executado;
+            i=51;
+       }
+    }
+
+    let positivo2 = 0;
+    let negativo2 = 0;
+    let total2 = 0;
+    let dataAnalisado2 = '';
+
+    for(var i = 0; i < 50 && i < analisesTodos[2].analises.length; ++i){
+       
+        if(analisesTodos[2].analises[i].tema.includes(tema)){
+            positivo2 = analisesTodos[2].analises[i].qt_pos;
+            negativo2 = analisesTodos[2].analises[i].qt_neg;
+            total2 = analisesTodos[2].analises[i].total;
+            dataAnalisado2 = analisesTodos[2].analises[i].executado;
+            i=51;
+       }
+    }
+
+    let positivo3 = 0;
+    let negativo3 = 0;
+    let total3 = 0;
+    let dataAnalisado3 = '';
+
+    for(var i = 0; i < 50 && i < analisesTodos[3].analises.length; ++i){
+       
+        if(analisesTodos[3].analises[i].tema.includes(tema)){
+            positivo3 = analisesTodos[3].analises[i].qt_pos;
+            negativo3 = analisesTodos[3].analises[i].qt_neg;
+            total3 = analisesTodos[3].analises[i].total;
+            dataAnalisado3 = analisesTodos[3].analises[i].executado;
+            i=51;
+       }
+    }
+
+    console.log(typeof(dataAnalisado3));
+
+    res.render("main/graficos",{titulo:"Gráficos de "+tema,
+        tema: tema,
+        positivo: positivo,
+        negativo: negativo,
+        total: total,
+        dataAnalisado: dataAnalisado,
+
+        positivo1: positivo1,
+        negativo1: negativo1,
+        total1: total1,
+        dataAnalisado1: dataAnalisado1,
+
+        positivo2: positivo2,
+        negativo2: negativo2,
+        total2: total2,
+        dataAnalisado2: dataAnalisado2,
+
+        positivo3: positivo3,
+        negativo3: negativo3,
+        total3: total3,
+        dataAnalisado3: dataAnalisado3
+    });
 }
 
 module.exports = { index, sobre, nuvem, analise, graficos };
