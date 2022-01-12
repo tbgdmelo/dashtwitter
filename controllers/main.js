@@ -52,8 +52,6 @@ async function index(req,res){
         const trending = await Trending.findOne().sort({horario_coleta: -1});
 
         const analises = await Analise.findOne().sort({analisado: -1});
-        
-        console.log(analises.analisado)
 
         res.render("main/home",{titulo:"Dashboard Twitter",
          trending: tops(trending.trending[0]['trends']),
@@ -77,11 +75,26 @@ async function sobre(req,res){
     }
 }
 
+
+const {spawn} = require('child_process');
 async function nuvem(req,res){
     const tweets2 = await Tweets.find().sort({coleta: -1}).limit(5);
     //
     var nuvem = gerarNuvem(tweets2);
     console.log(nuvem)
+
+    var dataToSend = nuvem;
+    
+    const python = spawn('python', ['public/images/cloud.py', nuvem]);
+
+    python.stdout.on('data', (data) => {
+        console.log(`stdout: ${data}`);
+    });
+
+    python.on('close', (code) => {
+        console.log(`child process close all stdio with code ${code}`);
+    });
+
     res.render("main/nuvem",{titulo:"Nuvem de Palavras"});
 }
 
