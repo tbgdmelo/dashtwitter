@@ -133,7 +133,6 @@ async function graficos(req,res){
 
     const analisesTodos = await Analise.find().limit(4).sort({analisado: -1});
 
-    console.log(analisesTodos[1]);
     
     let positivo1 = 0;
     let negativo1 = 0;
@@ -151,6 +150,7 @@ async function graficos(req,res){
        }
     }
 
+
     let positivo2 = 0;
     let negativo2 = 0;
     let total2 = 0;
@@ -166,6 +166,7 @@ async function graficos(req,res){
             i=51;
        }
     }
+
 
     let positivo3 = 0;
     let negativo3 = 0;
@@ -183,29 +184,48 @@ async function graficos(req,res){
        }
     }
 
-    console.log(typeof(dataAnalisado3));
-
+    
     res.render("main/graficos",{titulo:"Gráficos de "+tema,
         tema: tema,
         positivo: positivo,
         negativo: negativo,
         total: total,
         dataAnalisado: dataAnalisado,
+        ano: dataAnalisado.slice(6,10),
+        dia: dataAnalisado.slice(3,5),
+        mes: dataAnalisado.slice(0,2),
+        hora: dataAnalisado.slice(12,14),
+        minuto: dataAnalisado.slice(15,17),
 
         positivo1: positivo1,
         negativo1: negativo1,
         total1: total1,
         dataAnalisado1: dataAnalisado1,
+        ano1: dataAnalisado1.slice(6,10),
+        dia1: dataAnalisado1.slice(3,5),
+        mes1: dataAnalisado1.slice(0,2),
+        hora1: dataAnalisado1.slice(12,14),
+        minuto1: dataAnalisado1.slice(15,17),
 
         positivo2: positivo2,
         negativo2: negativo2,
         total2: total2,
         dataAnalisado2: dataAnalisado2,
+        ano2: dataAnalisado2.slice(6,10),
+        dia2: dataAnalisado2.slice(3,5),
+        mes2: dataAnalisado2.slice(0,2),
+        hora2: dataAnalisado2.slice(12,14),
+        minuto2: dataAnalisado2.slice(15,17),
 
         positivo3: positivo3,
         negativo3: negativo3,
         total3: total3,
-        dataAnalisado3: dataAnalisado3
+        dataAnalisado3: dataAnalisado3,
+        ano3: dataAnalisado3.slice(6,10),
+        dia3: dataAnalisado3.slice(3,5),
+        mes3: dataAnalisado3.slice(0,2),
+        hora3: dataAnalisado3.slice(12,14),
+        minuto3: dataAnalisado3.slice(15,17),
     });
 }
 

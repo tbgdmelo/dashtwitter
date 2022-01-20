@@ -26,7 +26,9 @@
             const options = {
                 title: 'Quantidade de Tweets da Última análise: '+{{total}},
                 height: 400,
-                width: 720
+                width: 720,
+                hAxis: {title: 'Sentimento'},
+                vAxis: {title: 'Quantidade de Tweets'},
             }
 
             const chart = new google.visualization.ColumnChart(container)
@@ -39,19 +41,52 @@
         google.charts.load('current', { packages: [ 'corechart' ] })
         google.charts.setOnLoadCallback(drawChart)
 
+
+        const d = new Date({{ano}}, {{mes}}, {{dia}}, {{hora}}, {{minuto}})
+        const ye = new Intl.DateTimeFormat('pt', { year: 'numeric' }).format(d)
+        const mo = new Intl.DateTimeFormat('pt', { month: 'short' }).format(d)
+        const da = new Intl.DateTimeFormat('pt', { day: '2-digit' }).format(d)
+        const hr = new Intl.DateTimeFormat('pt', { hour: '2-digit' }).format(d)
+        const min = new Intl.DateTimeFormat('pt', { minute: '2-digit' }).format(d)
+
+        const d1 = new Date({{ano1}}, {{mes1}}, {{dia1}}, {{hora1}}, {{minuto1}})
+        const ye1 = new Intl.DateTimeFormat('pt', { year: 'numeric' }).format(d1)
+        const mo1 = new Intl.DateTimeFormat('pt', { month: 'short' }).format(d1)
+        const da1 = new Intl.DateTimeFormat('pt', { day: '2-digit' }).format(d1)
+        const hr1 = new Intl.DateTimeFormat('pt', { hour: '2-digit' }).format(d1)
+        const min1 = new Intl.DateTimeFormat('pt', { minute: '2-digit' }).format(d1)
+
+
+        const d2 = new Date({{ano2}}, {{mes2}}, {{dia2}}, {{hora2}}, {{minuto2}})
+        const ye2 = new Intl.DateTimeFormat('pt', { year: 'numeric' }).format(d2)
+        const mo2 = new Intl.DateTimeFormat('pt', { month: 'short' }).format(d2)
+        const da2 = new Intl.DateTimeFormat('pt', { day: '2-digit' }).format(d2)
+        const hr2 = new Intl.DateTimeFormat('pt', { hour: '2-digit' }).format(d2)
+        const min2 = new Intl.DateTimeFormat('pt', { minute: '2-digit' }).format(d2)
+
+
+        const d3 = new Date({{ano3}}, {{mes3}}, {{dia3}}, {{hora3}}, {{minuto3}})
+        const ye3 = new Intl.DateTimeFormat('pt', { year: 'numeric' }).format(d3)
+        const mo3 = new Intl.DateTimeFormat('pt', { month: 'short' }).format(d3)
+        const da3 = new Intl.DateTimeFormat('pt', { day: '2-digit' }).format(d3)
+        const hr3 = new Intl.DateTimeFormat('pt', { hour: '2-digit' }).format(d3)
+        const min3 = new Intl.DateTimeFormat('pt', { minute: '2-digit' }).format(d3)
+
         function drawChart() {
-            const container = document.querySelector('#chart2')
+            const container = document.querySelector('#chart2');
             const data = new google.visualization.arrayToDataTable([
                 [ 'Coleta', 'Positivos', 'Negativos' ],
-                [ 4, {{positivo3}}, {{negativo3}} ],
-                [ 3, {{positivo2}}, {{negativo2}} ],
-                [ 2, {{positivo1}}, {{negativo1}} ],
-                [ 1, {{positivo}}, {{negativo}} ],
+                [ `${da3}-${mo3}-${ye3}, ${hr3}:${min3}`, {{positivo3}}, {{negativo3}} ],
+                [ `${da2}-${mo2}-${ye2}, ${hr2}:${min2}`, {{positivo2}}, {{negativo2}} ],
+                [ `${da1}-${mo1}-${ye1}, ${hr1}:${min1}`, {{positivo1}}, {{negativo1}} ],
+                [ `${da}-${mo}-${ye}, ${hr}:${min}`, {{positivo}}, {{negativo}} ],
             ])
             const options = {
                 title: 'Variação de Tweets nas últimas 4 coletas',
                 height: 400,
-                width: 720
+                width: 720,
+                hAxis: {title: 'Ordem da coleta (mais antigo para o mais recente)'},
+                vAxis: {title: 'Quantidade de Tweets'},
             }
 
             const chart = new google.visualization.AreaChart(container)
