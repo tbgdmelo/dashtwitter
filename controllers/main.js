@@ -6,7 +6,7 @@ const Analise = require('../models/analise');
 
 function tops(trending){
     var result = [ ];
-    for(var i = 0; i < 50 && i < trending.length; ++i){
+    for(var i = 0; i < 20 && i < trending.length; ++i){
         result.push(trending[i]);
     }
     return result;
