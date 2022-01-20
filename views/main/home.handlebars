@@ -93,7 +93,7 @@
                     </tr>
                   </thead>
                   <tbody>
-                    {{#each trending as |trend|}}
+                    {{#each trending1 as |trend|}}
 
                       <tr>
                         <td>
@@ -107,12 +107,8 @@
                           <span class="text-xs font-weight-bold"> {{totalTT trend.tweet_volume}} </span>
                         </td>
                         <td class="align-middle text-center text-sm">
-                          {{#each @root.analises}}
 
-                            {{#if (verificaTema trend.name tema)}}
-                              <i class="fas fa-{{verificaSentimento sentiment}}"></i>
-                            {{/if}}
-                          {{/each}}
+                          <i class="{{verificaAnalise @root.analises trend.name}}"></i>
                           
                         </td>
                         <td class="align-middle text-center text-sm">

@@ -1,3 +1,5 @@
+const handlebars = require('express-handlebars');
+
 function totalTT(valor){
     if(valor!=null){
         return valor;
@@ -35,4 +37,29 @@ function tratarHashtag(tema){
         return tema;
     }
 }
-module.exports= { totalTT, verificaSentimento, verificaTema, tratarHashtag }
+
+function verificaAnalise(analises, tema){
+    var valor="";
+    analises.forEach(analise => {
+        if(analise.tema===tema){
+            console.log(analise.tema)
+            console.log(analise.sentiment)
+            if(analise.sentiment === 'Positivo'){
+                valor=  "fas fa-thumbs-up";
+            }
+            else if(analise.sentiment === 'Negativo'){
+                valor= "fas fa-thumbs-down";
+            }
+        }
+    });
+    console.log(valor)
+    if(valor===""){
+        //o tema n tem analise
+        return "fas fa-ellipsis-h";
+    }
+    else{
+        return valor;
+    }
+    
+}
+module.exports= { totalTT, verificaSentimento, verificaTema, tratarHashtag, verificaAnalise }

@@ -4,9 +4,17 @@ const Tweets = require('../models/tweets');
 const Trending = require('../models/trending');
 const Analise = require('../models/analise');
 
-function tops(trending){
+function tops20(trending){
     var result = [ ];
     for(var i = 0; i < 20 && i < trending.length; ++i){
+        result.push(trending[i]);
+    }
+    return result;
+}
+
+function tops50(trending){
+    var result = [ ];
+    for(var i = 0; i < 50 && i < trending.length; ++i){
         result.push(trending[i]);
     }
     return result;
@@ -54,7 +62,8 @@ async function index(req,res){
         const analises = await Analise.findOne().sort({analisado: -1});
 
         res.render("main/home",{titulo:"Dashboard Twitter",
-         trending: tops(trending.trending[0]['trends']),
+         trending: tops20(trending.trending[0]['trends']),
+         trending1: tops50(trending.trending[0]['trends']),
          coleta: trending.horario_coleta,
          total_tweets: countTweets(tweets),
          hashtags: countHashtags(tweets),
