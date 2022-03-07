@@ -8,6 +8,8 @@ router.get("/sobre", mainController.sobre);
 
 router.get("/analise", mainController.analise);
 
+router.post("/analise", mainController.analise);
+
 router.get("/nuvem", mainController.nuvem);
 
 router.get("/graficos/:tema", mainController.graficos);

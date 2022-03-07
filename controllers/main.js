@@ -87,7 +87,7 @@ async function sobre(req,res){
 
 const {spawn} = require('child_process');
 async function nuvem(req,res){
-    const tweets2 = await Tweets.find().sort({coleta: -1}).limit(5);
+    const tweets2 = await Tweets.find().sort({coleta: 1}).limit(5);
     //
     var nuvem = gerarNuvem(tweets2);
     console.log(nuvem)
@@ -108,7 +108,23 @@ async function nuvem(req,res){
 }
 
 async function analise(req,res){
-    res.render("main/analise",{titulo:"Análise de Tweet"});
+    if(req.route.methods.get){
+        res.render("main/analise",{titulo:"Análise de Tweet"});
+    }
+    else if(req.route.methods.post){
+        const tweet = req.body.textoTweet;
+    
+        const python = spawn('python', ['public/pythonfiles/analisar.py', tweet]);
+
+        python.stdout.on('data', (data) => {
+            console.log(`stdout: ${data}`);
+        });
+
+        python.on('close', (code) => {
+            console.log(`child process close all stdio with code ${code}`);
+        });
+
+    }
 }
 
 async function graficos(req,res){

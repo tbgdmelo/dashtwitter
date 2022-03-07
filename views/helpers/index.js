@@ -42,8 +42,8 @@ function verificaAnalise(analises, tema){
     var valor="";
     analises.forEach(analise => {
         if(analise.tema===tema){
-            console.log(analise.tema)
-            console.log(analise.sentiment)
+            //console.log(analise.tema)
+            //console.log(analise.sentiment)
             if(analise.sentiment === 'Positivo'){
                 valor=  "fas fa-thumbs-up";
             }
@@ -52,7 +52,7 @@ function verificaAnalise(analises, tema){
             }
         }
     });
-    console.log(valor)
+    //console.log(valor)
     if(valor===""){
         //o tema n tem analise
         return "fas fa-ellipsis-h";
